@@ -17,6 +17,8 @@ export const Register = () => {
             const data = await res.json();
             console.log(data);
       if (data.success) {
+        window.location.href="/"
+
         alert("Registration successful!");
       } else {
         alert("Registration failed: " + data.msg);

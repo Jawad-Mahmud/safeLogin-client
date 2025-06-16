@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom';
+
 export const Login = () => {
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
@@ -19,6 +21,7 @@ export const Login = () => {
           const data=await res.json();
           console.log(data);
           if(data.success){
+            window.location.href="/"
             alert(data.msg);
             console.log("user:",data.user);
           }else {
@@ -60,10 +63,12 @@ onSubmit={handleSubmit}
        <button
           type="submit"
            className="w-16 bg-blue-500  text-white py-2 rounded hover:bg-blue-600"
+             
         >
           Login
         </button>
 
+        <p>Don't have an account? <Link to="/register" className="text-blue-500">Register here</Link></p>
 
 
 </form>
