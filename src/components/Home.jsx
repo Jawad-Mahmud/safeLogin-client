@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react'
 import { useNavigate } from 'react-router-dom';
-
+import BASE_URL from '../config.js/BaseUrl';
 export const Home = () => {
     const navigate = useNavigate();
 
@@ -8,7 +8,7 @@ export const Home = () => {
     useEffect(() => {
     const fetchUser=async()=>{
         try{
-            const res=await fetch("http://localhost:3000/api/auth/userData",{
+            const res=await fetch(`${BASE_URL}/api/auth/userData`,{
              method:"GET",
              credentials:"include",   
             })
@@ -39,7 +39,7 @@ export const Home = () => {
         <button
           className="mt-4  bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-300"
           onClick={async () => {
-            await fetch("http://localhost:3000/api/auth/logout", {
+            await fetch(`${BASE_URL}/api/auth/logout`, {
               method: "POST",
               credentials: "include",
             });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import BASE_URL from '../config.js/BaseUrl';
 export const AllUsers = () => {
   const [page, setPage] = useState(1);
   const [users, setUsers] = useState([]);
@@ -9,7 +9,7 @@ export const AllUsers = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`http://localhost:3000/api/admin/allUsers?page=1&limit=5`, {
+        const res = await fetch(`${BASE_URL}/api/admin/allUsers?page=1&limit=5`, {
           method: 'GET',
           credentials: 'include',
         });
@@ -58,7 +58,7 @@ export const AllUsers = () => {
         <button
           className="mt-4 bg-red-500 text-white px-4 py-2 rounded w-full"
           onClick={async () => {
-            await fetch("http://localhost:3000/api/auth/logout", {
+            await fetch(`${BASE_URL}/api/auth/logout`, {
               method: "POST",
               credentials: "include",
             });

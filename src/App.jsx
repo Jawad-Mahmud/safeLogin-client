@@ -6,6 +6,7 @@ import { Home } from './components/Home'
 import { AllUsers } from './components/AllUsers'
 import { ProtectRouter } from './components/ProtectRouter'
 import { Unauthorized } from './components/Unauthorized'
+import BASE_URL from './config.js/BaseUrl'
 
 export const App = () => {
 
@@ -15,7 +16,7 @@ export const App = () => {
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const res = await fetch("http://localhost:3000/api/auth/userData", {
+        const res = await fetch(`${BASE_URL}/api/auth/userData`, {
           credentials: "include",
         });
         const data = await res.json();
