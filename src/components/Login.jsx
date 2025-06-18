@@ -1,8 +1,10 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export const Login = () => {
+    const navigate = useNavigate();
+
     const [email,setEmail]=useState("");
     const [password,setPassword]=useState("");
     const handleSubmit=async(e)=>{
@@ -20,13 +22,16 @@ export const Login = () => {
           });
           const data=await res.json();
           console.log(data);
-          if(data.success){
-            window.location.href="/"
-            alert(data.msg);
-            console.log("user:",data.user);
-          }else {
-      alert("Login failed: " + data.msg);
-    }
+         if (data.success) {
+  if (data.user.role === "admin") {
+    navigate("/all-users");  // ✅ Go to Admin route
+  } else {
+    navigate("/");   // ✅ Go to Home page
+  }
+} else {
+  alert("Login failed: " + data.msg);
+}
+
         }
       
 

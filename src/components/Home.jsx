@@ -1,6 +1,9 @@
 import React, { useState,useEffect } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
+    const navigate = useNavigate();
+
     const [user, setuser] = useState(null);
     useEffect(() => {
     const fetchUser=async()=>{
@@ -40,7 +43,7 @@ export const Home = () => {
               method: "POST",
               credentials: "include",
             });
-            window.location.href = "/login";
+             navigate("/login");
           }}
         >
           Logout
